@@ -330,8 +330,8 @@
   </div>
 
   <script>
-    function corrigir() {
-      const gabarito = {
+function corrigir() {
+    const respostas = {
         q1: "CPU",
         q2: "Calcular",
         q3: "RAM",
@@ -361,31 +361,21 @@
         q27: "HD ou SSD",
         q28: "Aumentar a frequência do processador",
         q29: "Fonte de alimentação",
-        q30: "Placa-mãe",
+        q30: "Placa-mãe"
+    };
 
+    let pontuacao = 0;
 
-
-
-      };
-
-      let acertos = 0;
-      for (let i = 1; i <= 30; i++) {
-        const resposta = document.querySelector(`input[name="q${i}"]:checked`);
-        const divCorr = document.getElementById(`corr${i}`);
-        if (resposta) {
-          if (resposta.value === gabarito[`q${i}`]) {
-            acertos++;
-            divCorr.textContent = "";
-          } else {
-            divCorr.textContent = `❌ Resposta correta: ${gabarito[`q${i}`]}`;
-          }
-        } else {
-          divCorr.textContent = `❌ Você não respondeu. Resposta correta: ${gabarito[`q${i}`]}`;
+    for (let i = 1; i <= 30; i++) {
+        const respostaUsuario = document.querySelector(`input[name="q${i}"]:checked`);
+        if (respostaUsuario && respostaUsuario.value === respostas[`q${i}`]) {
+            pontuacao++;
         }
-      }
-
-      document.getElementById("resultado").innerText = `Você acertou ${acertos} de 10 perguntas!`;
     }
-  </script>
+
+    document.getElementById("resultado").textContent = `Você acertou ${pontuacao} de 30 questões.`;
+}
+</script>
+
 </body>
 </html>
