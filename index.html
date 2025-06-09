@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz de Arquitetura de Computadores</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #0a0f1b;
+      color: #e0e0e0;
+      background-image: radial-gradient(circle at 50% 0%, #1a2238 0%, #0a0f1b 100%);
+    }
+  
+    .quiz-container {
+      max-width: 850px;
+      margin: 60px auto;
+      padding: 35px;
+      background: rgba(26, 34, 56, 0.85);
+      border: 1px solid #2c3e50;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.1);
+    }
+  
+    h1 {
+      text-align: center;
+      color: #00ffff;
+      margin-bottom: 40px;
+      text-shadow: 0 0 10px #00ffff80;
+    }
+  
+    .question {
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed #2e4053;
+    }
+  
+    label {
+      display: block;
+      margin: 6px 0;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+  
+    label:hover {
+      color: #00ffff;
+      text-shadow: 0 0 5px #00ffff40;
+    }
+  
+    input[type="radio"] {
+      margin-right: 8px;
+    }
+  
+    .correction {
+      margin-top: 5px;
+      font-weight: bold;
+      color: #ff5e5e;
+    }
+  
+    .result {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 40px;
+      color: #00ffae;
+      text-shadow: 0 0 6px #00ffae70;
+    }
+  
+    button {
+      display: block;
+      margin: 40px auto 0;
+      padding: 14px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      background: #00ffff;
+      color: #0a0f1b;
+      font-weight: bold;
+      box-shadow: 0 0 12px #00ffff80;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+  
+    button:hover {
+      background: #00baba;
+      box-shadow: 0 0 16px #00ffffa0;
+    }
+  </style>
+  
+  
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Quiz: Arquitetura de Computadores</h1>
+    <form id="quizForm">
+      <div class="question">
+        <p>1. Qual componente é conhecido como o cérebro do computador?</p>
+        <label><input type="radio" name="q1" value="CPU" /> CPU</label><br>
+        <label><input type="radio" name="q1" value="RAM" /> RAM</label><br>
+        <label><input type="radio" name="q1" value="HD" /> HD</label>
+        <div class="correction" id="corr1"></div>
+      </div>
+      <div class="question">
+        <p>2. Qual é a função da ULA?</p>
+        <label><input type="radio" name="q2" value="Calcular" /> Realizar cálculos e operações lógicas</label><br>
+        <label><input type="radio" name="q2" value="Armazenar" /> Armazenar arquivos</label><br>
+        <label><input type="radio" name="q2" value="Refrigerar" /> Refrigerar o processador</label>
+        <div class="correction" id="corr2"></div>
+      </div>
+      <div class="question">
+        <p>3. Qual memória é volátil e usada durante o funcionamento?</p>
+        <label><input type="radio" name="q3" value="ROM" /> ROM</label><br>
+        <label><input type="radio" name="q3" value="RAM" /> RAM</label><br>
+        <label><input type="radio" name="q3" value="HD" /> HD</label>
+        <div class="correction" id="corr3"></div>
+      </div>
+      <div class="question">
+        <p>4. O que é Hyper-Threading?</p>
+        <label><input type="radio" name="q4" value="Multi-Thread" /> Execução de duas threads por núcleo</label><br>
+        <label><input type="radio" name="q4" value="Cooler" /> Ventilação extra</label><br>
+        <label><input type="radio" name="q4" value="Slot" /> Tipo de slot de memória</label>
+        <div class="correction" id="corr4"></div>
+      </div>
+      <div class="question">
+        <p>5. O que é barramento?</p>
+        <label><input type="radio" name="q5" value="Transporte" /> Canal de comunicação entre componentes</label><br>
+        <label><input type="radio" name="q5" value="Memória" /> Tipo de memória</label><br>
+        <label><input type="radio" name="q5" value="Firmware" /> Tipo de firmware</label>
+        <div class="correction" id="corr5"></div>
+      </div>
+      <div class="question">
+        <p>6. Qual é a diferença entre SSD e HD?</p>
+        <label><input type="radio" name="q6" value="Velocidade" /> SSD é mais rápido que HD</label><br>
+        <label><input type="radio" name="q6" value="Igual" /> Nenhuma, são iguais</label><br>
+        <label><input type="radio" name="q6" value="Peso" /> HD é mais leve</label>
+        <div class="correction" id="corr6"></div>
+      </div>
+      <div class="question">
+        <p>7. O que significa BIOS?</p>
+        <label><input type="radio" name="q7" value="Sistema básico de entrada e saída" /> Sistema básico de entrada e saída</label><br>
+        <label><input type="radio" name="q7" value="Sistema operacional" /> Sistema operacional</label><br>
+        <label><input type="radio" name="q7" value="Placa de vídeo" /> Placa de vídeo</label>
+        <div class="correction" id="corr7"></div>
+      </div>
+      <div class="question">
+        <p>8. O que é pipeline?</p>
+        <label><input type="radio" name="q8" value="Etapas" /> Execução em etapas sobrepostas</label><br>
+        <label><input type="radio" name="q8" value="Atualização" /> Atualização do BIOS</label><br>
+        <label><input type="radio" name="q8" value="Memória" /> Tipo de memória</label>
+        <div class="correction" id="corr8"></div>
+      </div>
+      <div class="question">
+        <p>9. O que faz um nobreak?</p>
+        <label><input type="radio" name="q9" value="Energia" /> Mantém energia em caso de queda</label><br>
+        <label><input type="radio" name="q9" value="Desliga" /> Desliga tudo automaticamente</label><br>
+        <label><input type="radio" name="q9" value="Aumenta clock" /> Aumenta o clock do processador</label>
+        <div class="correction" id="corr9"></div>
+      </div>
+      <div class="question">
+        <p>10. O que é memória cache?</p>
+        <label><input type="radio" name="q10" value="Rápida" /> Memória muito rápida dentro da CPU</label><br>
+        <label><input type="radio" name="q10" value="HD" /> HD de grande capacidade</label><br>
+        <label><input type="radio" name="q10" value="RAM" /> RAM externa</label>
+        <div class="correction" id="corr10"></div>
+      </div>
+      <div class="question">
+        <p>11. O que é um registrador?</p>
+        <label><input type="radio" name="q11" value="Memória interna da CPU" /> Pequena memória interna da CPU</label><br>
+        <label><input type="radio" name="q11" value="Placa de vídeo" /> Tipo de placa de vídeo</label><br>
+        <label><input type="radio" name="q11" value="BIOS" /> Parte do BIOS</label>
+        <div class="correction" id="corr11"></div>
+      </div>
+      
+      <div class="question">
+        <p>12. Qual é a função da memória cache?</p>
+        <label><input type="radio" name="q12" value="Acelerar acesso aos dados" /> Acelerar acesso a dados frequentemente usados</label><br>
+        <label><input type="radio" name="q12" value="Armazenar arquivos grandes" /> Armazenar arquivos grandes</label><br>
+        <label><input type="radio" name="q12" value="Controlar energia" /> Controlar o fornecimento de energia</label>
+        <div class="correction" id="corr12"></div>
+      </div>
+      
+      <div class="question">
+        <p>13. Qual item está relacionado com a inicialização segura do sistema?</p>
+        <label><input type="radio" name="q13" value="Secure Boot" /> Secure Boot</label><br>
+        <label><input type="radio" name="q13" value="Cache" /> Memória Cache</label><br>
+        <label><input type="radio" name="q13" value="SSD" /> SSD</label>
+        <div class="correction" id="corr13"></div>
+      </div>
+      
+      <div class="question">
+        <p>14. O que é UEFI?</p>
+        <label><input type="radio" name="q14" value="Firmware moderno de inicialização" /> Substituto moderno da BIOS</label><br>
+        <label><input type="radio" name="q14" value="Memória" /> Tipo de memória</label><br>
+        <label><input type="radio" name="q14" value="Placa de som" /> Placa de som onboard</label>
+        <div class="correction" id="corr14"></div>
+      </div>
+      
+      <div class="question">
+        <p>15. O que representa o termo “pipeline” no processador?</p>
+        <label><input type="radio" name="q15" value="Execução em etapas sobrepostas" /> Execução em etapas sobrepostas</label><br>
+        <label><input type="radio" name="q15" value="Barramento de dados" /> Barramento de dados</label><br>
+        <label><input type="radio" name="q15" value="Backup automático" /> Backup automático de arquivos</label>
+        <div class="correction" id="corr15"></div>
+      </div>
+      
+      <div class="question">
+        <p>16. O que significa a sigla RAM?</p>
+        <label><input type="radio" name="q16" value="Memória de acesso aleatório" /> Memória de acesso aleatório</label><br>
+        <label><input type="radio" name="q16" value="Memória de acesso contínuo" /> Memória de acesso contínuo</label><br>
+        <label><input type="radio" name="q16" value="Sistema de áudio" /> Sistema de áudio modular</label>
+        <div class="correction" id="corr16"></div>
+      </div>
+      
+      <div class="question">
+        <p>17. O que é o barramento de dados?</p>
+        <label><input type="radio" name="q17" value="Canal de comunicação" /> Canal de comunicação entre CPU, memória e dispositivos</label><br>
+        <label><input type="radio" name="q17" value="Disco rígido" /> Outro nome para HD</label><br>
+        <label><input type="radio" name="q17" value="Chip gráfico" /> Parte da placa de vídeo</label>
+        <div class="correction" id="corr17"></div>
+      </div>
+      
+      <div class="question">
+        <p>18. O que é o soquete da CPU?</p>
+        <label><input type="radio" name="q18" value="Encaixe do processador na placa-mãe" /> Encaixe onde o processador é instalado</label><br>
+        <label><input type="radio" name="q18" value="Tipo de memória" /> Tipo de memória interna</label><br>
+        <label><input type="radio" name="q18" value="HD externo" /> HD externo removível</label>
+        <div class="correction" id="corr18"></div>
+      </div>
+      
+      <div class="question">
+        <p>19. O que diferencia a arquitetura ARM?</p>
+        <label><input type="radio" name="q19" value="Baixo consumo de energia" /> Menor consumo de energia, usada em celulares</label><br>
+        <label><input type="radio" name="q19" value="Mais memória" /> Maior capacidade de memória</label><br>
+        <label><input type="radio" name="q19" value="Maior placa" /> Exige placa-mãe maior</label>
+        <div class="correction" id="corr19"></div>
+      </div>
+      
+      <div class="question">
+        <p>20. Para que serve a partição SWAP no sistema?</p>
+        <label><input type="radio" name="q20" value="Memória virtual" /> Funciona como memória RAM extra</label><br>
+        <label><input type="radio" name="q20" value="Instalar programas" /> Armazenar programas instalados</label><br>
+        <label><input type="radio" name="q20" value="Impedir vírus" /> Impedir que vírus sejam instalados</label>
+        <div class="correction" id="corr20"></div>
+      </div>
+      <div class="question">
+        <p>21. O que é arquitetura RISC?</p>
+        <label><input type="radio" name="q21" value="Instruções simples" /> Conjunto reduzido de instruções simples</label><br>
+        <label><input type="radio" name="q21" value="Instruções complexas" /> Conjunto de instruções complexas</label><br>
+        <label><input type="radio" name="q21" value="Sistema de vídeo" /> Tipo de placa de vídeo dedicada</label>
+        <div class="correction" id="corr21"></div>
+      </div>
+      
+      <div class="question">
+        <p>22. O que é memória ROM?</p>
+        <label><input type="radio" name="q22" value="Somente leitura" /> Memória de somente leitura</label><br>
+        <label><input type="radio" name="q22" value="Leitura e gravação" /> Memória para leitura e gravação</label><br>
+        <label><input type="radio" name="q22" value="Volátil" /> Memória volátil usada pelo sistema</label>
+        <div class="correction" id="corr22"></div>
+      </div>
+      
+      <div class="question">
+        <p>23. O que é um barramento de endereço?</p>
+        <label><input type="radio" name="q23" value="Indica local na memória" /> Canal que transporta a posição dos dados na memória</label><br>
+        <label><input type="radio" name="q23" value="Transfere dados" /> Canal que transfere dados propriamente ditos</label><br>
+        <label><input type="radio" name="q23" value="Energia" /> Canal que fornece energia para os componentes</label>
+        <div class="correction" id="corr23"></div>
+      </div>
+      
+      <div class="question">
+        <p>24. O que significa DDR na RAM?</p>
+        <label><input type="radio" name="q24" value="Transferência dupla" /> Double Data Rate (taxa de transferência dupla)</label><br>
+        <label><input type="radio" name="q24" value="Disco de dados rápido" /> Disco de dados rápido</label><br>
+        <label><input type="radio" name="q24" value="RAM externa" /> RAM externa auxiliar</label>
+        <div class="correction" id="corr24"></div>
+      </div>
+      
+      <div class="question">
+        <p>25. Para que serve o slot PCIe?</p>
+        <label><input type="radio" name="q25" value="Expansão" /> Conectar placas de expansão como GPU e SSD NVMe</label><br>
+        <label><input type="radio" name="q25" value="Energia" /> Conectar fonte de energia</label><br>
+        <label><input type="radio" name="q25" value="Cooler" /> Controlar ventoinhas do processador</label>
+        <div class="correction" id="corr25"></div>
+      </div>
+      
+      <div class="question">
+        <p>26. O que é o kernel do sistema operacional?</p>
+        <label><input type="radio" name="q26" value="Coração do sistema" /> Núcleo do sistema operacional</label><br>
+        <label><input type="radio" name="q26" value="Software de vídeo" /> Software de driver de vídeo</label><br>
+        <label><input type="radio" name="q26" value="BIOS" /> Parte da BIOS responsável pelo boot</label>
+        <div class="correction" id="corr26"></div>
+      </div>
+      
+      <div class="question">
+        <p>27. Qual é o objetivo do overclock?</p>
+        <label><input type="radio" name="q27" value="Aumentar desempenho" /> Aumentar a frequência de operação para mais desempenho</label><br>
+        <label><input type="radio" name="q27" value="Reduzir ruído" /> Reduzir o ruído do cooler</label><br>
+        <label><input type="radio" name="q27" value="Salvar energia" /> Economizar energia do sistema</label>
+        <div class="correction" id="corr27"></div>
+      </div>
+      
+      <div class="question">
+        <p>28. O que é arquitetura CISC?</p>
+        <label><input type="radio" name="q28" value="Instruções complexas" /> Conjunto de instruções complexas</label><br>
+        <label><input type="radio" name="q28" value="Instruções simples" /> Conjunto de instruções simples</label><br>
+        <label><input type="radio" name="q28" value="Compacta" /> Arquitetura compacta para notebooks</label>
+        <div class="correction" id="corr28"></div>
+      </div>
+      
+      <div class="question">
+        <p>29. Qual é a função da BIOS?</p>
+        <label><input type="radio" name="q29" value="Iniciar o sistema" /> Inicializar o hardware e carregar o sistema operacional</label><br>
+        <label><input type="radio" name="q29" value="Antivírus" /> Proteger o sistema contra vírus</label><br>
+        <label><input type="radio" name="q29" value="Armazenamento" /> Armazenar arquivos do usuário</label>
+        <div class="correction" id="corr29"></div>
+      </div>
+      
+      <div class="question">
+        <p>30. O que é PCI?</p>
+        <label><input type="radio" name="q30" value="Padrão antigo de expansão" /> Padrão antigo para placas de expansão (vídeo, rede)</label><br>
+        <label><input type="radio" name="q30" value="Memória RAM" /> Tipo de memória RAM</label><br>
+        <label><input type="radio" name="q30" value="Software" /> Programa do sistema</label>
+        <div class="correction" id="corr30"></div>
+      </div>
+      
+
+      <button type="button" onclick="corrigir()">Ver resultado</button>
+      <div class="result" id="resultado"></div>
+    </form>
+  </div>
+
+  <script>
+    function corrigir() {
+      const gabarito = {
+        q1: "CPU",
+        q2: "Calcular",
+        q3: "RAM",
+        q4: "Multi-Thread",
+        q5: "Transporte",
+        q6: "Velocidade",
+        q7: "Sistema básico de entrada e saída",
+        q8: "Etapas",
+        q9: "Energia",
+        q10: "Rápida",
+        q11: "Memória interna da CPU",
+        q12: "Acelerar acesso aos dados",
+        q13: "Secure Boot",
+        q14: "Firmware moderno de inicialização",
+        q15: "Execução em etapas sobrepostas",
+        q16: "Memória de acesso aleatório",
+        q17: "Canal de comunicação",
+        q18: "Encaixe do processador na placa-mãe",
+        q19: "Baixo consumo de energia",
+        q20: "Memória virtual",
+        q21: "Instruções simples",
+
+
+
+      };
+
+      let acertos = 0;
+      for (let i = 1; i <= 30; i++) {
+        const resposta = document.querySelector(`input[name="q${i}"]:checked`);
+        const divCorr = document.getElementById(`corr${i}`);
+        if (resposta) {
+          if (resposta.value === gabarito[`q${i}`]) {
+            acertos++;
+            divCorr.textContent = "";
+          } else {
+            divCorr.textContent = `❌ Resposta correta: ${gabarito[`q${i}`]}`;
+          }
+        } else {
+          divCorr.textContent = `❌ Você não respondeu. Resposta correta: ${gabarito[`q${i}`]}`;
+        }
+      }
+
+      document.getElementById("resultado").innerText = `Você acertou ${acertos} de 10 perguntas!`;
+    }
+  </script>
+</body>
+</html>
